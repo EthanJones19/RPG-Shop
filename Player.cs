@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using System.Text;
 
 namespace HelloWorld
@@ -11,33 +12,27 @@ namespace HelloWorld
 
         public Player()
         {
-            _inventory = new Item[3];
             _gold = 100;
+            _inventory = new Item[3];
         }
-
-        public Player(int moneyVal, int inventorySize)
-        {
-            _gold = moneyVal;
-            _inventory = new Item[inventorySize];
-        }
-
         
         public Item[] GetInventory()
         {
             return _inventory;
         }
 
-        public bool Buy(Item item, int itemIndex)
+        public bool Buy(Item item, int inventoryIndex)
         {
-            if (itemIndex > 0 && itemIndex < _inventory.Length)
+            if (_gold >= item.cost)
             {
+                _gold -= item.cost;
+                _inventory[inventoryIndex] = item;
                 return true;
             }
             return false;
-
         }
 
-        public int GetMoney()
+        public int GetGold()
         {
             return _gold;
         }

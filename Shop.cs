@@ -6,10 +6,10 @@ namespace HelloWorld
 {
     
     public struct Item
-     {
+    {
         public int cost;
         public string name;
-     }
+    }
 
 
 
@@ -17,22 +17,34 @@ namespace HelloWorld
 
     class Shop
     {
-        
+        private int _gold;
+        private Item[] _inventory;
+
+
         public Shop()
         {
-            
+            _gold = 100;
+            _inventory = new Item[3];
+        }
 
-
-
-            return;
+        public Shop(Item[] items)
+        {
+            _gold = 100;
+            _inventory = items;
+        }
+        public bool Sell(Player player, int itemIndex, int playerIndex)
+        {
+            Item itemToBuy = _inventory[itemIndex];
+            if (player.Buy(itemToBuy, playerIndex))
+            {
+                _gold += itemToBuy.cost;
+                return true;
+            }
+            return false;
         }
 
         
 
     }
 
-    public bool Sell(Player player, int shop Index, int player Index)
-    {
-        return player.Buy(inventory[shopIndex], player Index);
-    }
 }
