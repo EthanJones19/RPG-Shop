@@ -9,10 +9,11 @@ namespace HelloWorld
         Player player = new Player(100, 3);
 
         private bool _gameOver = false;
-        private Player _player1;
+        private Player _player;
         private Item _arrows;
         private Item _shield;
         private Item _gem;
+        private Shop 
 
 
 

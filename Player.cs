@@ -6,31 +6,42 @@ namespace HelloWorld
 {
     class Player
     {
-        private int _money;
+        private int _gold;
         private Item[] _inventory;
 
         public Player()
         {
             _inventory = new Item[3];
-            _money = 100;
+            _gold = 100;
         }
 
         public Player(int moneyVal, int inventorySize)
         {
-            _money = moneyVal;
+            _gold = moneyVal;
             _inventory = new Item[inventorySize];
         }
 
+        
         public Item[] GetInventory()
         {
             return _inventory;
         }
 
-        public bool Contains(int itemIndex)
+        public bool Buy(Item item, int itemIndex)
         {
-
-
+            if (itemIndex > 0 && itemIndex < _inventory.Length)
+            {
+                return true;
+            }
+            return false;
 
         }
+
+        public int GetMoney()
+        {
+            return _gold;
+        }
+
+
     }
 }
